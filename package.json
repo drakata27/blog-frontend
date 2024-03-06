@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "proxy": "https://blog-backend-drab.vercel.app/",
+  "proxy": "https://blog-backend-drab.vercel.app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
