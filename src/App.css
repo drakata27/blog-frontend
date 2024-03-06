@@ -473,6 +473,15 @@ form a:hover{
   margin-bottom: 2rem;
 }
 
+/* Loader */
+.loader-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+  margin-bottom: 30rem;
+}
+
 /* Mobile */
 @media screen and (max-width: 768px) {
   /* Header */

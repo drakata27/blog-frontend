@@ -1,5 +1,4 @@
 import './App.css';
-
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 import PrivateRoute from '../src/utils/PrivateRoute'
@@ -19,24 +18,26 @@ function App() {
     <Router>
       <AuthProvider>
       <div className="dark">
-        <Header />
-        <Routes>
-          <Route path='/' exact Component={BlogsListPage} />
-          <Route path='/blog/:id' Component={BlogPage} />
-          
-          <Route exact path='/blog/:id/edit' element={<PrivateRoute/>}>
-            <Route path='/blog/:id/edit' Component={UpdateBlog} />
-          </Route>
-          
-
-          <Route exact path='/blog/new' element={<PrivateRoute/>}>
-            <Route path='/blog/new' Component={CreateBlog} />
-          </Route>
-
-          <Route exact path='/login' element={<LoginPage/>}/>
-
-        </Routes>
-        <Footer />
+        <div>
+          <Header />
+          <Routes>
+            <Route path='/' exact Component={BlogsListPage} />
+            <Route path='/blog/:id' Component={BlogPage} />
+            
+            <Route exact path='/blog/:id/edit' element={<PrivateRoute/>}>
+              <Route path='/blog/:id/edit' Component={UpdateBlog} />
+            </Route>
+            
+  
+            <Route exact path='/blog/new' element={<PrivateRoute/>}>
+              <Route path='/blog/new' Component={CreateBlog} />
+            </Route>
+  
+            <Route exact path='/login' element={<LoginPage/>}/>
+  
+          </Routes>
+          <Footer />
+        </div>
       </div>
       </AuthProvider>
     </Router>
