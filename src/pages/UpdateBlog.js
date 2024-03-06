@@ -66,7 +66,7 @@ const UpdateBlog = () => {
         const data = await response.json();
         setBlog(data)
         console.log('Blog updated successfully:', data);
-        navigate(`https://blog-backend-drab.vercel.app/blog/${id}`)
+        navigate(`/blog/${id}`)
     } catch (error) {
         console.error('Error updating blog:', error);
     }
