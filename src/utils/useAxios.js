@@ -5,7 +5,7 @@ import dayjs from 'dayjs'
 import {useContext} from 'react'
 import AuthContext from '../context/AuthContext'
 
-const baseURL = '/api'
+const baseURL = 'https://blog-backend-drab.vercel.app/api'
 
 const useAxios = () => {
     const {authTokens, setUser, setAuthTokens} = useContext(AuthContext)

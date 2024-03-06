@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     const navigate = useNavigate()
 
     const loginUser = async (email, password) => {
-        const response = await fetch('/api/token/', {
+        const response = await fetch('https://blog-backend-drab.vercel.app/api/token/', {
             method : 'POST',
             headers : {
                 "Content-Type": "application/json"

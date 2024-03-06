@@ -35,7 +35,7 @@ const CreateBlog = () => {
                 formData.append('cover', '/covers/default.jpg');
             }
 
-            const response = await fetch(`/api/blogs/`, {
+            const response = await fetch(`https://blog-backend-drab.vercel.app/api/blogs/`, {
                 method: 'POST',
                 body: formData,
             });

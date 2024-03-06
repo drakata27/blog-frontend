@@ -5,7 +5,7 @@ import {getTime} from '../utils/getTime'
 
 const BlogItem = ({blog}) => {
   return (
-    <Link to={`/blog/${blog.id}`}>
+    <Link to={`https://blog-backend-drab.vercel.app/blog/${blog.id}`}>
         <div className="blog-item">
           <div>
             {blog.cover ? (

@@ -9,7 +9,7 @@ const BlogsListPage = () => {
     }, [])
 
     let getBlogs = async ()=> {
-        let response = await fetch('/api/blogs/')
+        let response = await fetch('https://blog-backend-drab.vercel.app/api/blogs/')
         let data = await response.json()
         setBlogs(data)
     }

@@ -21,7 +21,7 @@ const UpdateBlog = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await fetch(`/api/blogs/${id}/edit`);
+        const response = await fetch(`https://blog-backend-drab.vercel.app/api/blogs/${id}/edit`);
         if (!response.ok) {
           console.error('Error fetching blog data:', response.status, response.statusText);
           return;
@@ -53,7 +53,7 @@ const UpdateBlog = () => {
     } 
 
     try {
-        const response = await fetch(`/api/blogs/${id}/edit`, {
+        const response = await fetch(`https://blog-backend-drab.vercel.app/api/blogs/${id}/edit`, {
           method: "PUT",
           body: formData
         });
@@ -66,7 +66,7 @@ const UpdateBlog = () => {
         const data = await response.json();
         setBlog(data)
         console.log('Blog updated successfully:', data);
-        navigate(`/blog/${id}`)
+        navigate(`https://blog-backend-drab.vercel.app/blog/${id}`)
     } catch (error) {
         console.error('Error updating blog:', error);
     }
@@ -76,7 +76,7 @@ let uploadCover = async () => {
   const formData = new FormData();
   formData.append('cover', cover);
 
-  const response = await fetch(`/api/blogs/${id}/edit`, {
+  const response = await fetch(`https://blog-backend-drab.vercel.app/api/blogs/${id}/edit`, {
     method: "PUT",
     body: formData,
   })

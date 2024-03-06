@@ -32,7 +32,7 @@ const BlogPage = () => {
         const getBlog = async () => {
           if (id==='new') return
 
-          let response = await fetch(`/api/blogs/${id}/`);
+          let response = await fetch(`https://blog-backend-drab.vercel.app/api/blogs/${id}/`);
           let data = await response.json();
           setBlog(data);
         };
@@ -44,7 +44,7 @@ const BlogPage = () => {
 
         if (isConfirmed) {
           try {
-            const response = await fetch(`/api/blogs/${id}/`, {
+            const response = await fetch(`https://blog-backend-drab.vercel.app/api/blogs/${id}/`, {
               method: "DELETE",
               headers: {
                 "Content-Type": "application/json",
