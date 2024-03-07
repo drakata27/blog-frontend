@@ -45,6 +45,7 @@ const BlogPage = () => {
       }, [id]);
 
       let deleteBlog = async () => {
+        setLoading(true)
         const isConfirmed = window.confirm("Are you sure you want to delete this blog?");
 
         if (isConfirmed) {
@@ -58,14 +59,17 @@ const BlogPage = () => {
   
             if (!response.ok) {
               console.error('Error deleting blog. Server responded with:', response.status, response.statusText);
+              setLoading(false)
               return;
             }
   
             const data = await response.json();
             console.log('Blog deleted successfully:', data);
+            setLoading(false)
             navigate('/')
           } catch(error) {
             console.error('Error deleting blog:', error);
+            setLoading(false)
           }
         } 
       }

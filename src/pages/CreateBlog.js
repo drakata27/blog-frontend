@@ -5,8 +5,11 @@ import modules from '../utils/quilModules'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
+import Loader from "react-spinners/GridLoader";
+
 const CreateBlog = () => {
     const [cover, setCover] = useState()
+    const [loading, setLoading] = useState(false)
 
     const [blog, setBlog] = useState({
         title: '',
@@ -25,6 +28,7 @@ const CreateBlog = () => {
 
     const createBlog = async () => {
         try {
+            setLoading(true)
             const formData = new FormData();
             formData.append('title', blog.title);
             formData.append('subtitle', blog.subtitle);
@@ -42,11 +46,13 @@ const CreateBlog = () => {
 
             if (!response.ok) {
                 console.error('Error creating blog. Server responded with:', response.status, response.statusText);
+                setLoading(false)
                 return;
             }
 
             const data = await response.json();
             console.log('Blog created successfully:', data);
+            setLoading(false)
             navigate('/')
         } catch (error) {
             console.error('Error creating blog:', error);
@@ -55,7 +61,6 @@ const CreateBlog = () => {
 
     
     let handleSubmit = ()=> {
-        console.log('body', blog);
         if (blog.title.trim() !== '' &&
             blog.subtitle.trim() !== '') {
             createBlog();
@@ -73,44 +78,58 @@ const CreateBlog = () => {
         
 
     return (
-        <div className='blog-form'>
-            <input
-                type='text'
-                name='title'
-                placeholder='Title...'
-                value={blog.title}
-                onChange={handleInputChange}
-            />
-            <input
-                className='subtitle-input'
-                type='text'
-                name='subtitle'
-                placeholder='Subtitle...'
-                value={blog.subtitle}
-                onChange={handleInputChange}
-            />
-            
-            <div className='cover-container '>
-                <h2>Upload Cover</h2>
-                <input 
-                    type='file' 
-                    accept='image/*' 
-                    key={inputKey} 
-                    value={undefined} 
-                    onChange={(e)=> setCover(e.target.files[0])}/>
-                <button onClick={clearImage} className='remove-btn'>Remove</button>
-            </div>
-            
-            <ReactQuill 
-                className='editor-input'
-                modules={modules}
-                theme="snow" 
-                value={blog.body} 
-                placeholder='Type here...'
-                onChange={body => handleInputChange({ target: { value: body, name: 'body' } })}
-            />
-
-            <button onClick={handleSubmit}>Publish</button>
+        <div className=''>
+            {
+                loading ? 
+                <div className='loader-container'>
+                    <Loader
+                        color={"orange"}
+                        loading={loading}
+                        size={90}
+                        aria-label="Loading Spinner"
+                    />
+                  </div>
+                  :
+                  <div className='blog-form'>
+                      <input
+                          type='text'
+                          name='title'
+                          placeholder='Title...'
+                          value={blog.title}
+                          onChange={handleInputChange}
+                      />
+                      <input
+                          className='subtitle-input'
+                          type='text'
+                          name='subtitle'
+                          placeholder='Subtitle...'
+                          value={blog.subtitle}
+                          onChange={handleInputChange}
+                      />
+                      
+                      <div className='cover-container '>
+                          <h2>Upload Cover</h2>
+                          <input 
+                              type='file' 
+                              accept='image/*' 
+                              key={inputKey} 
+                              value={undefined} 
+                              onChange={(e)=> setCover(e.target.files[0])}/>
+                          <button onClick={clearImage} className='remove-btn'>Remove</button>
+                      </div>
+                      
+                      <ReactQuill 
+                          className='editor-input'
+                          modules={modules}
+                          theme="snow" 
+                          value={blog.body} 
+                          placeholder='Type here...'
+                          onChange={body => handleInputChange({ target: { value: body, name: 'body' } })}
+                      />
+          
+                      <button onClick={handleSubmit}>Publish</button>
+                  </div>
+            }
         </div>
     );
 };
