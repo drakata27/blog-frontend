@@ -133,6 +133,7 @@ button:hover {
 .auth-btn{
   margin-right: 1rem;
   background-color: transparent;
+  color: red;
 }
 
 .auth-btn:hover {
@@ -144,6 +145,21 @@ button:hover {
   font-family: 'Lexend', sans-serif;
   margin-right: 2rem;
 }
+.links-container{
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+}
+.link{
+  font-size: 1.2rem;
+  color: orange;
+}
+
+.link:hover{
+  color: yellow;
+  scale: 1.1;
+}
+
 /* Blog Item */
 .blog-item {
   display: flex;
@@ -497,6 +513,10 @@ form a:hover{
   }
   .auth-btn{
     font-size: 1rem;
+  }
+
+  .sign-out-btn{
+    color: red;
   }
 
   /* Blogs List */

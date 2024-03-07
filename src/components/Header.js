@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import {useContext} from 'react'
 import { Link } from 'react-router-dom'
-import Logo from '../assets/logo.png'
+import Logo from '../assets/logo512.png'
 
 import {jwtDecode} from 'jwt-decode'
 import AuthContext from '../context/AuthContext'
@@ -22,26 +22,28 @@ const Header = () => {
               <img src={Logo} alt='logo' />
             </a>
         </div>
-        
-        <div className="buttons">
-        {token !== null && 
-        <>
-        <div className="horizontal-container">
-          <p className='username'>Hello, {user.username}</p>
-          <button className='new-blog-btn'>
-            <Link to="/blog/new/">
-              <span className="material-symbols-outlined">edit_square</span>
-            </Link>
-          </button>
+        <div className="links-container">
+          <div className="buttons">
+          {token !== null && 
+          <>
+          <div className="horizontal-container">
+            <p className='username'>Hello, {user.username}</p>
+            <button className='new-blog-btn'>
+              <Link to="/blog/new/">
+                <span className="material-symbols-outlined">edit_square</span>
+              </Link>
+            </button>
 
-          <button 
-            className='auth-btn'
-            onClick={logoutUser}>
-            Sign Out
-          </button>
-        </div>
-        </>
-        }
+            <button 
+              className='auth-btn sign-out-btn'
+              onClick={logoutUser}>
+              Sign Out
+            </button>
+          </div>
+          </>
+          }
+          </div>
+          {/* <Link className='link' to='/contact'>Contact</Link> */}
         </div>
     </div>
   )

@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import CreateBlog from './pages/CreateBlog';
 import UpdateBlog from './pages/UpdateBlog'
 import LoginPage from './authentication/LoginPage';
+import Contact from './components/Contact';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             </Route>
   
             <Route exact path='/login' element={<LoginPage/>}/>
+            <Route exact path='/contact' element={<Contact/>}/>
   
           </Routes>
           <Footer />
