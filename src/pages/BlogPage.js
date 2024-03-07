@@ -84,8 +84,8 @@ const BlogPage = () => {
           </div>
           :
         <div>
-          <h1>{blog?.title}</h1>
-          <h2>{blog?.subtitle}</h2>
+          <h1 className='blog-title'>{blog?.title}</h1>
+          <h2 className='blog-subtitle'>{blog?.subtitle}</h2>
           
           <div className='horizontal-container'>
             <div className='author-container'>
@@ -140,11 +140,6 @@ const BlogPage = () => {
           dangerouslySetInnerHTML={{__html:blog?.body}}></div>
         </div>
       }
-
-        {/* <div className='socials'>
-          <Link to='https://www.linkedin.com/in/aleksandar-drakaliyski/'><img className='social-icon' src={LinkedIn} alt='linkedin'/></Link>
-          <Link to='https://github.com/drakata27'><img className='social-icon' src={GitHub} alt='github'/></Link>
-        </div> */}
     </div>
   )
 }
