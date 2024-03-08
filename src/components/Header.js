@@ -43,7 +43,8 @@ const Header = () => {
           </>
           }
           </div>
-          {/* <Link className='link' to='/contact'>Contact</Link> */}
+          {/* <Link className='link' to='/'>Home</Link>
+          <Link className='link' to='/contact'>Contact</Link> */}
         </div>
     </div>
   )
