@@ -8,6 +8,7 @@ import Mail from '../assets/mail.png'
 import emailjs from '@emailjs/browser';
 
 import Loader from "react-spinners/ScaleLoader";
+const swal = require('sweetalert2')
 
 const Contact = () => {
   const form = useRef();
@@ -15,7 +16,6 @@ const Contact = () => {
   const serviceId = process.env.REACT_APP_SERVICE_ID;
   const templateId = process.env.REACT_APP_TEMPLATE_ID;
 
-  const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false)
 
   const sendEmail = (e) => {
@@ -23,7 +23,15 @@ const Contact = () => {
     e.preventDefault();
     const { user_name, user_email, message } = e.target.elements;
     if (!user_name.value || !user_email.value || !message.value) {
-      setErrorMessage('Please fill out all fields.');
+      swal.fire({
+        title: 'Please fill out all of the fields',
+        icon: 'error',
+        toast: 'true',
+        timer: 2000,
+        position: 'top-right',
+        timerProgressBar: true,
+        showConfirmButton: false
+    })
       setLoading(false)
       return;
     }
@@ -36,13 +44,28 @@ const Contact = () => {
         () => {
           console.log('SUCCESS!');
           e.target.reset()
-          setErrorMessage('');
+          swal.fire({
+            title: 'Your message has been sent successfully!',
+            icon: 'success',
+            toast: 'true',
+            timer: 2000,
+            position: 'top-right',
+            timerProgressBar: true,
+            showConfirmButton: false
+        })
           setLoading(false)
-          alert('Message sent successfully!')
         },
         (error) => {
           console.log('FAILED...', error.text);
-          setErrorMessage('Failed to send email');
+          swal.fire({
+            title: 'Failed to send email',
+            icon: 'error',
+            toast: 'true',
+            timer: 2000,
+            position: 'top-right',
+            timerProgressBar: true,
+            showConfirmButton: false
+        })
           setLoading(false)
         },
       );
@@ -87,7 +110,6 @@ const Contact = () => {
         }
 
       </form>
-      {errorMessage && <p>{errorMessage}</p>}
       </div>
     </div>
     </div>

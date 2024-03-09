@@ -1,21 +1,30 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import AuthContext from '../context/AuthContext'
+import Loader from "react-spinners/ScaleLoader";
 
 const LoginPage = () => {
   const {loginUser} = useContext(AuthContext)
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e) => {
-     e.preventDefault()
-     const email = e.target.email.value
-     const password = e.target.password.value
-     email.length > 0 && loginUser(email, password)
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    try {
+      await loginUser(email, password);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
+  };
 
 
   return (
     <div>
       <>
-        <form onSubmit={handleSubmit}> 
+        <form className='login-form' onSubmit={handleSubmit}> 
         <div className="input-container">
             <label 
                 className="email-label" 
@@ -43,13 +52,22 @@ const LoginPage = () => {
             />
             </div>
 
-
+          {
+            loading ?
+            <Loader
+                color={"green"}
+                loading={loading}
+                size={30}
+                aria-label="Loading Spinner"
+            />
+            :
             <button
                 className="btn form-btn"
-                type="submit"
-            >
+                type="submit">
                 Login
             </button>
+          }
+
         </form>
       </>
     </div>

@@ -1,7 +1,7 @@
 import {createContext, useState, useEffect} from 'react'
 import {jwtDecode} from 'jwt-decode'
 import {useNavigate} from 'react-router-dom'
-
+const swal = require('sweetalert2')
 
 const AuthContext = createContext()
 export default AuthContext
@@ -42,9 +42,26 @@ export const AuthProvider = ({ children }) => {
             setUser(jwtDecode(data.access))
             localStorage.setItem("authTokens", JSON.stringify(data))
             navigate('/')
+            swal.fire({
+                title: 'You have been logged in',
+                icon: 'success',
+                toast: 'true',
+                timer: 2000,
+                position: 'top-right',
+                timerProgressBar: true,
+                showConfirmButton: false
+            })
         } else {
-            console.log('Server issue: '+response.status);
-            alert('Something went wrong: ' + response.status)
+            console.log('Server issue: '+ response.status);
+            swal.fire({
+                title: 'Email or Password is wrong',
+                icon: 'error',
+                toast: 'true',
+                timer: 2000,
+                position: 'top-right',
+                timerProgressBar: true,
+                showConfirmButton: false
+            })
         }
     }
 
@@ -53,6 +70,15 @@ export const AuthProvider = ({ children }) => {
         setUser(null)
         localStorage.removeItem("authTokens")
         navigate('/')
+        swal.fire({
+            title: 'You have been logged out',
+            icon: 'success',
+            toast: 'true',
+            timer: 2000,
+            position: 'top-right',
+            timerProgressBar: true,
+            showConfirmButton: false
+        })
     }
 
     const contextData = {
