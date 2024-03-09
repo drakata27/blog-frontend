@@ -503,6 +503,9 @@ form a:hover{
 .contact-container-main{
   margin: 3rem;
 }
+.contact-container-main h1{
+  color: orange;
+}
 .contact-container{
   display: flex;
   align-items: center;
