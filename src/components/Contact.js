@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import {Link} from 'react-router-dom'
 
 import GitHub from '../assets/github.png'
@@ -7,33 +7,52 @@ import Mail from '../assets/mail.png'
 
 import emailjs from '@emailjs/browser';
 
-const Contact = () => {
-  // const form = useRef();
-  // const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
-  // const serviceId = process.env.REACT_APP_SERVICE_ID;
-  // const templateId = process.env.REACT_APP_TEMPLATE_ID;
+import Loader from "react-spinners/ScaleLoader";
 
-  // const sendEmail = (e) => {
-  //   e.preventDefault();
-  //   emailjs
-  //     .sendForm(serviceId, templateId, form.current, {
-  //       publicKey: publicKey,
-  //     })
-  //     .then(
-  //       () => {
-  //         console.log('SUCCESS!');
-  //         e.target.reset()
-  //       },
-  //       (error) => {
-  //         console.log('FAILED...', error.text);
-  //       },
-  //     );
-  // };
+const Contact = () => {
+  const form = useRef();
+  const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+  const serviceId = process.env.REACT_APP_SERVICE_ID;
+  const templateId = process.env.REACT_APP_TEMPLATE_ID;
+
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false)
+
+  const sendEmail = (e) => {
+    setLoading(true)
+    e.preventDefault();
+    const { user_name, user_email, message } = e.target.elements;
+    if (!user_name.value || !user_email.value || !message.value) {
+      setErrorMessage('Please fill out all fields.');
+      setLoading(false)
+      return;
+    }
+
+    emailjs
+      .sendForm(serviceId, templateId, form.current, {
+        publicKey: publicKey,
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          e.target.reset()
+          setErrorMessage('');
+          setLoading(false)
+          alert('Message sent successfully!')
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+          setErrorMessage('Failed to send email');
+          setLoading(false)
+        },
+      );
+  };
 
   return (
     <div className='contact-container-main'>
     <h1>Contact</h1>
     <div className='contact-container'>
+
       <div className='contact-links'>
         <div className='links'>
           <Link to='https://www.linkedin.com/in/aleksandar-drakaliyski/' target="_blank"><img className='social-icon' src={LinkedIn} alt='linkedin'/></Link>
@@ -48,14 +67,28 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* <div className='contact-form-container'>
+      <div className='contact-form-container'>
+        <h2>Leave a message!</h2>
       <form className='contact-form' ref={form} onSubmit={sendEmail}>
           <input type="text" name="user_name"  placeholder='Name'/>
           <input type="email" name="user_email" placeholder='Email'/>
           <textarea name="message" placeholder='Your message...'/>
-        <button className='btn' type="submit">Send</button>
+
+        {
+          loading ?
+          <Loader
+                color={"green"}
+                loading={loading}
+                size={30}
+                aria-label="Loading Spinner"
+            />
+            :
+            <button className='btn' type="submit">Send</button>
+        }
+
       </form>
-      </div> */}
+      {errorMessage && <p>{errorMessage}</p>}
+      </div>
     </div>
     </div>
   )
