@@ -12,6 +12,8 @@ import {jwtDecode} from 'jwt-decode'
 
 import Loader from "react-spinners/PacmanLoader";
 
+const swal = require('sweetalert2')
+
 const BlogPage = () => {
     let {id} = useParams();
     const [loading, setLoading] = useState(false)
@@ -59,16 +61,44 @@ const BlogPage = () => {
   
             if (!response.ok) {
               console.error('Error deleting blog. Server responded with:', response.status, response.statusText);
+              
+              swal.fire({
+                title: 'Error deleting blog: ' + response.statusText,
+                icon: 'error',
+                toast: 'true',
+                timer: 5000,
+                position: 'top-right',
+                timerProgressBar: true,
+                showConfirmButton: false
+            })
+              
               setLoading(false)
               return;
             }
-  
-            const data = await response.json();
-            console.log('Blog deleted successfully:', data);
+            
+            swal.fire({
+              title: 'Blog deleted successfully' ,
+              icon: 'success',
+              toast: 'true',
+              timer: 5000,
+              position: 'top-right',
+              timerProgressBar: true,
+              showConfirmButton: false
+          })
+
             setLoading(false)
             navigate('/')
           } catch(error) {
             console.error('Error deleting blog:', error);
+            swal.fire({
+              title: 'Error: ' + error,
+              icon: 'error',
+              toast: 'true',
+              timer: 3000,
+              position: 'top-right',
+              timerProgressBar: true,
+              showConfirmButton: false
+          })
             setLoading(false)
           }
         } 

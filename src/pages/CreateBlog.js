@@ -6,6 +6,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
 import Loader from "react-spinners/GridLoader";
+const swal = require('sweetalert2')
 
 const CreateBlog = () => {
     const [cover, setCover] = useState()
@@ -46,16 +47,44 @@ const CreateBlog = () => {
 
             if (!response.ok) {
                 console.error('Error creating blog. Server responded with:', response.status, response.statusText);
+                
+                swal.fire({
+                    title: 'Error: ' + response.statusText,
+                    icon: 'error',
+                    toast: 'true',
+                    timer: 5000,
+                    position: 'top-right',
+                    timerProgressBar: true,
+                    showConfirmButton: false
+                })
+                
                 setLoading(false)
                 return;
             }
+            
+            swal.fire({
+                title: 'Blog created successfully!',
+                icon: 'success',
+                toast: 'true',
+                timer: 5000,
+                position: 'top-right',
+                timerProgressBar: true,
+                showConfirmButton: false
+            })
 
-            const data = await response.json();
-            console.log('Blog created successfully:', data);
             setLoading(false)
             navigate('/')
         } catch (error) {
             console.error('Error creating blog:', error);
+            swal.fire({
+                title: 'Error creating blog: ' + error,
+                icon: 'error',
+                toast: 'true',
+                timer: 5000,
+                position: 'top-right',
+                timerProgressBar: true,
+                showConfirmButton: false
+            })
         }
     };
 
@@ -65,7 +94,15 @@ const CreateBlog = () => {
             blog.subtitle.trim() !== '') {
             createBlog();
         } else {
-            alert('Blog contents cannot be empty');
+            swal.fire({
+                title: 'Blog contents cannot be empty',
+                icon: 'error',
+                toast: 'true',
+                timer: 5000,
+                position: 'top-right',
+                timerProgressBar: true,
+                showConfirmButton: false
+            })
         }        
     }
 
@@ -74,6 +111,15 @@ const CreateBlog = () => {
     
     const clearImage = () => {
         setInputKey(Date.now());
+        swal.fire({
+            title: 'Image was cleared',
+            icon: 'success',
+            toast: 'true',
+            timer: 5000,
+            position: 'top-right',
+            timerProgressBar: true,
+            showConfirmButton: false
+        })
     }
         
 

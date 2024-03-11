@@ -8,6 +8,8 @@ import 'react-quill/dist/quill.snow.css';
 
 import Loader from "react-spinners/GridLoader";
 
+const swal = require('sweetalert2')
+
 const UpdateBlog = () => {
   let {id} = useParams();
   const [loading, setLoading] = useState(false)
@@ -28,6 +30,17 @@ const UpdateBlog = () => {
         const response = await fetch(`https://blog-backend-drab.vercel.app/api/blogs/${id}/edit`);
         if (!response.ok) {
           console.error('Error fetching blog data:', response.status, response.statusText);
+          
+          swal.fire({
+            title: 'Error fetching data: ' + response.statusText,
+            icon: 'error',
+            toast: 'true',
+            timer: 5000,
+            position: 'top-right',
+            timerProgressBar: true,
+            showConfirmButton: false
+        })
+          
           return;
         }
         const data = await response.json();
@@ -35,6 +48,16 @@ const UpdateBlog = () => {
         setLoading(false)
       } catch (error) {
         console.error('Error fetching blog data:', error);
+
+        swal.fire({
+          title: 'Error fetching data: ' + error,
+          icon: 'error',
+          toast: 'true',
+          timer: 5000,
+          position: 'top-right',
+          timerProgressBar: true,
+          showConfirmButton: false
+      })
         setLoading(false)
       }
     };
@@ -66,6 +89,17 @@ const UpdateBlog = () => {
 
         if (!response.ok) {
             console.error('Error updating blog. Server responded with:', response.status, response.statusText);
+            
+            swal.fire({
+              title: 'Error updating blog: ' + response.statusText,
+              icon: 'error',
+              toast: 'true',
+              timer: 5000,
+              position: 'top-right',
+              timerProgressBar: true,
+              showConfirmButton: false
+          })
+            
             setLoading(false)
             return;
         }
@@ -73,10 +107,30 @@ const UpdateBlog = () => {
         const data = await response.json();
         setBlog(data)
         console.log('Blog updated successfully:', data);
+
+        swal.fire({
+          title: 'Blog updated successfully!',
+          icon: 'success',
+          toast: 'true',
+          timer: 5000,
+          position: 'top-right',
+          timerProgressBar: true,
+          showConfirmButton: false
+      })
+
         setLoading(false)
         navigate(`/blog/${id}`)
     } catch (error) {
         console.error('Error updating blog:', error);
+        swal.fire({
+          title: 'Error updating blog: ' + error,
+          icon: 'error',
+          toast: 'true',
+          timer: 5000,
+          position: 'top-right',
+          timerProgressBar: true,
+          showConfirmButton: false
+      })
         setLoading(false)
     }
 };
@@ -95,6 +149,16 @@ let uploadCover = async () => {
     const data = await response.json();
     setBlog({ ...blog, cover: data.cover });
   }
+  swal.fire({
+    title: 'Cover was uploaded',
+    icon: 'success',
+    toast: 'true',
+    timer: 5000,
+    position: 'top-right',
+    timerProgressBar: true,
+    showConfirmButton: false
+  })
+
   setLoading(false)
 }
 
