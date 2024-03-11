@@ -113,6 +113,7 @@ return (
           :
       <div className='blog-form'>
           <input
+              className='title-input'
               type='text'
               name='title'
               placeholder='Title...'
@@ -120,6 +121,7 @@ return (
               onChange={(e) => handleInputChange({ target: { value: e.target.value, name: 'title' } })}
           />
           <input
+              className='subtitle-input'
               type='text'
               name='subtitle'
               placeholder='Subtitle...'
@@ -132,7 +134,7 @@ return (
           </div>
 
           <div className='cover-container '>
-              <h2>Upload Cover</h2>
+              <h2>Cover</h2>
               <input 
                   type='file' 
                   accept='image/*' 

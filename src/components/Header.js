@@ -27,7 +27,7 @@ const Header = () => {
           {token !== null && 
           <>
           <div className="horizontal-container">
-            <p className='username'>Hello, {user.username}</p>
+            <p className='username'>{user.username}</p>
             <button className='new-blog-btn'>
               <Link to="/blog/new/">
                 <span className="material-symbols-outlined">edit_square</span>

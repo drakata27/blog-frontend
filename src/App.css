@@ -57,7 +57,6 @@ p {
 }
 
 li {
-  /* padding: 1rem; */
   font-size: 1.5rem;
   color: var(--color-text);
 }
@@ -704,5 +703,44 @@ form a:hover{
   /* Footer */
   .footer p{
     font-size: 1rem;
+  }
+
+  /* Create Blog */
+  .blog-form{
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+  }
+  .title-input {
+    font-size: 1.4rem;
+    width: 100%;
+  }
+  .subtitle-input {
+    font-size: 1rem;
+    width: 100%;
+  }
+  .cover-container{
+    margin: 2rem 0;
+  }
+  
+  .cover-container h2{
+    font-size: 1.4rem;
+  }
+  
+  .cover-container input{
+    font-size: 1.4rem;
+  }
+
+  .editor-input{
+    width: 95%;
+  }
+  .blog-form button {
+    font-size: 1.5rem;
+    width: 50%;
+  }
+
+  /* Update Blog */
+  .cover-preview img{
+    width: 80%;
+    height: 80%;
   }
 }
