@@ -409,6 +409,15 @@ button:hover {
 }
 
 /* Editor */
+
+  /* .ql-container.ql-snow {
+    height: auto;
+  }
+  .ql-editor {
+    height: 150px;
+    overflow-y: scroll;
+  } */
+
 .editor-input{
   font-size: 1.5rem;
   font-weight: normal;
@@ -425,6 +434,10 @@ button:hover {
 .ql-editor {
   margin-bottom: 3rem;
 }
+.editor-input .ql-editor {
+  max-height: 300px;
+  overflow-y: auto;
+}
 
 .ql-container.ql-snow,
 .ql-toolbar
@@ -436,6 +449,7 @@ button:hover {
 .ql-toolbar {
   background-color: wheat;
 }
+
 /* Placeholder text */
 .quill > .ql-container > .ql-editor.ql-blank::before{
   font-size: 20px;
@@ -733,6 +747,7 @@ form a:hover{
   .editor-input{
     width: 95%;
   }
+
   .blog-form button {
     font-size: 1.5rem;
     width: 50%;
