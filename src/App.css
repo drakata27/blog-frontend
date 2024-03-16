@@ -645,6 +645,11 @@ form a:hover{
   .blog-page{
     margin: 2rem 0.5rem;
   }
+  
+  .blog-page>div>.ql-editor{
+    margin: 2rem 0.5rem;
+    border: none;
+  }
 
   .blog-page>h1 {
     font-size: 2.5rem;

@@ -171,6 +171,7 @@ const BlogPage = () => {
   
           <div 
           className='ql-editor' 
+          style={{ border: 'none' }}
           dangerouslySetInnerHTML={{__html:blog?.body}}></div>
         </div>
       }
