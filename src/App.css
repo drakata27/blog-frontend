@@ -59,6 +59,7 @@ p {
 li {
   font-size: 1.5rem;
   color: var(--color-text);
+  margin: 0.5rem;
 }
 
 a{
@@ -102,16 +103,8 @@ button:hover {
 }
 
 /* Header */
-.app-header {
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  justify-content: space-between;
-  background-color: var(--color-headfoot);
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-}
 
-.app-header a img{
+.logo{
   height: 5rem;
   width:  5rem;
 }
@@ -122,7 +115,8 @@ button:hover {
 
 .new-blog-btn{
   background-color: green;
-  margin-right: 20px;
+  margin-right: 2rem;
+  padding: 1rem;
 }
 
 .new-blog-btn:hover{
@@ -140,6 +134,12 @@ button:hover {
   text-decoration: underline;
   transform: scale(1.1);
 }
+
+.sign-out-btn{
+  background-color: transparent;
+  border-radius: 4px;
+}
+
 .username{
   font-family: 'Lexend', sans-serif;
   margin-right: 2rem;
@@ -240,11 +240,6 @@ button:hover {
   width: 100%;
   height: auto;
 }
-.ql-editor>p>img{
-  margin: 0 auto;
-  width: 100%;
-  height: auto;
-}
 
 .horizontal-container{
   display: flex;
@@ -302,8 +297,7 @@ button:hover {
 
 .blog-form>button{
   background-color: green;
-  margin-top: 7rem;
-  margin-bottom: 10rem;
+  margin: 2rem 0rem;
   font-size: 2rem;
   padding: 1rem;
   width: 20%;
@@ -409,21 +403,11 @@ button:hover {
 }
 
 /* Editor */
-
-  /* .ql-container.ql-snow {
-    height: auto;
-  }
-  .ql-editor {
-    height: 150px;
-    overflow-y: scroll;
-  } */
-
 .editor-input{
   font-size: 1.5rem;
   font-weight: normal;
   color: black;
   margin-top: 2rem;
-  margin-bottom: 2rem;
   padding: 0.5rem;
   border-radius: 15px;
   background-color: transparent;
@@ -431,15 +415,23 @@ button:hover {
   width: 100vh;
 }
 
-.ql-editor {
-  margin-bottom: 3rem;
+.ql-editor{
+  border-radius: 15px;
+  border: white 2px solid;
+  margin-top: 1rem;
+}
+
+.ql-editor>p>img{
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
 }
 .ql-editor a{
   color: orange;
   text-decoration: underline;
 }
 .editor-input .ql-editor {
-  max-height: 300px;
+  max-height: 570px;
   overflow-y: auto;
 }
 

@@ -216,7 +216,7 @@ return (
               onChange={body => handleInputChange({ target: { value: body, name: 'body' } })}
           />
 
-          <button className='save-btn' onClick={updateBlog}>Save</button>
+          <button className='upload-btn' onClick={updateBlog}>Save</button>
       </div>
     }
   </div>

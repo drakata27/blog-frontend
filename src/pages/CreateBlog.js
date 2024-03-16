@@ -174,7 +174,7 @@ const CreateBlog = () => {
                           onChange={body => handleInputChange({ target: { value: body, name: 'body' } })}
                       />
           
-                      <button onClick={handleSubmit}>Publish</button>
+                      <button className='upload-btn' onClick={handleSubmit}>Publish</button>
                   </div>
             }
         </div>
