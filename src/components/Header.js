@@ -61,8 +61,8 @@ const NavManu = styled.ul`
     padding: 10px 10px;
   }
   @media screen and (max-width: 768px) {
-    display: ${(props) => (props.isToggleOpen ? "block" : "none")};
-    display: flex;
+    display: ${(props) => (props.isToggleOpen ? "flex" : "none")};
+    // display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
