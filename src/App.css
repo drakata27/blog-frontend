@@ -434,6 +434,10 @@ button:hover {
 .ql-editor {
   margin-bottom: 3rem;
 }
+.ql-editor a{
+  color: orange;
+  text-decoration: underline;
+}
 .editor-input .ql-editor {
   max-height: 300px;
   overflow-y: auto;
