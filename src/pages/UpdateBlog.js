@@ -13,21 +13,24 @@ const swal = require('sweetalert2')
 const UpdateBlog = () => {
   let {id} = useParams();
   const [loading, setLoading] = useState(false)
-
   const [cover, setCover] = useState()
+  const [checked, setChecked] = useState(false)
 
   const [blog, setBlog] = useState({
     title: '',
     subtitle: '',
     cover: cover,
     body: '',
+    is_draft: checked
   });
 
+  // const url = `https://blog-backend-drab.vercel.app/api/blogs/${id}/edit`
+  const url = `http://127.0.0.1:8000/api/blogs/${id}/edit`
   useEffect(() => {
     setLoading(true)
     const fetchBlog = async () => {
       try {
-        const response = await fetch(`https://blog-backend-drab.vercel.app/api/blogs/${id}/edit`);
+        const response = await fetch(url);
         if (!response.ok) {
           console.error('Error fetching blog data:', response.status, response.statusText);
           
@@ -45,6 +48,7 @@ const UpdateBlog = () => {
         }
         const data = await response.json();
         setBlog(data);
+        setChecked(data.is_draft);
         setLoading(false)
       } catch (error) {
         console.error('Error fetching blog data:', error);
@@ -62,7 +66,7 @@ const UpdateBlog = () => {
       }
     };
     fetchBlog();
-  }, [id]);
+  }, [id, url]);
 
   const navigate = useNavigate();
 
@@ -71,18 +75,29 @@ const UpdateBlog = () => {
       setBlog({ ...blog, [name]: value });
   };
 
+  const handleCheckboxChange = (e) => {
+    const { checked } = e.target;
+    setChecked(checked);
+    setBlog({ ...blog, is_draft: checked });
+  };
+
   const updateBlog = async () => {
     setLoading(true)
     const formData = new FormData();
     formData.append('title', blog.title);
     formData.append('subtitle', blog.subtitle);
     formData.append('body', blog.body);
+    formData.append('body', blog.body);
+    formData.append('is_draft', blog.is_draft);
     if (cover) {
       formData.append('cover', cover);
     } 
 
+    // const urlUpdate = `https://blog-backend-drab.vercel.app/api/blogs/${id}/edit`
+    const urlUpdate = `http://127.0.0.1:8000/api/blogs/${id}/edit`
+    
     try {
-        const response = await fetch(`https://blog-backend-drab.vercel.app/api/blogs/${id}/edit`, {
+        const response = await fetch(urlUpdate, {
           method: "PUT",
           body: formData
         });
@@ -140,7 +155,10 @@ let uploadCover = async () => {
   const formData = new FormData();
   formData.append('cover', cover);
 
-  const response = await fetch(`https://blog-backend-drab.vercel.app/api/blogs/${id}/edit`, {
+  // const urlUpdate = `https://blog-backend-drab.vercel.app/api/blogs/${id}/edit`
+  const urlUpdate = `http://127.0.0.1:8000/api/blogs/${id}/edit`
+
+  const response = await fetch(urlUpdate, {
     method: "PUT",
     body: formData,
   })
@@ -192,6 +210,16 @@ return (
               value={blog.subtitle}
               onChange={(e) => handleInputChange({ target: { value: e.target.value, name: 'subtitle' } })}
           />
+
+          <div className="horizontal-container" style={{marginTop: '2rem'}}>
+            <input
+                style={{marginTop: '0'}}
+                type="checkbox"
+                checked={checked} 
+                onChange={handleCheckboxChange}
+            />
+            <p>Draft</p>
+          </div>
 
           <div className="cover-preview">
             <img src={blog.cover} alt="cover" />

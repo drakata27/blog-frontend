@@ -11,12 +11,14 @@ const swal = require('sweetalert2')
 const CreateBlog = () => {
     const [cover, setCover] = useState()
     const [loading, setLoading] = useState(false)
+    const [checked, setChecked] = useState(false)
 
     const [blog, setBlog] = useState({
         title: '',
         subtitle: '',
         cover: cover,
         body: '',
+        is_draft: checked
     });
 
 
@@ -27,6 +29,12 @@ const CreateBlog = () => {
         setBlog({ ...blog, [name]: value });
     };
 
+    const handleCheckboxChange = (e) => {
+        const { checked } = e.target;
+        setChecked(checked);
+        setBlog({ ...blog, is_draft: checked });
+    };
+
     const createBlog = async () => {
         try {
             setLoading(true)
@@ -34,13 +42,16 @@ const CreateBlog = () => {
             formData.append('title', blog.title);
             formData.append('subtitle', blog.subtitle);
             formData.append('body', blog.body);
+            formData.append('is_draft', blog.is_draft);
             if (cover) {
                 formData.append('cover', cover);
             } else {
                 formData.append('cover', '/covers/default.jpg');
             }
-
-            const response = await fetch(`https://blog-backend-drab.vercel.app/api/blogs/`, {
+            
+            // const url = `https://blog-backend-drab.vercel.app/api/blogs/`
+            const url = `http://127.0.0.1:8000/api/blogs/`
+            const response = await fetch(url, {
                 method: 'POST',
                 body: formData,
             });
@@ -153,6 +164,16 @@ const CreateBlog = () => {
                           value={blog.subtitle}
                           onChange={handleInputChange}
                       />
+
+                      <div className="horizontal-container" style={{marginTop: '2rem'}}>
+                        <input
+                            style={{marginTop: '0'}}
+                            type="checkbox"
+                            checked={checked} 
+                            onChange={handleCheckboxChange}
+                        />
+                        <p>Draft</p>
+                      </div>
                       
                       <div className='cover-container '>
                           <h2>Cover</h2>
