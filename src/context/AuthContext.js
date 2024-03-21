@@ -51,6 +51,7 @@ export const AuthProvider = ({ children }) => {
                 timerProgressBar: true,
                 showConfirmButton: false
             })
+            window.location.reload();
         } else {
             console.log('Server issue: '+ response.status);
             swal.fire({
@@ -63,6 +64,8 @@ export const AuthProvider = ({ children }) => {
                 showConfirmButton: false
             })
         }
+
+
     }
 
     const logoutUser = () => {

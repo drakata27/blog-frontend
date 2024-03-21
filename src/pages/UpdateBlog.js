@@ -24,8 +24,9 @@ const UpdateBlog = () => {
     is_draft: checked
   });
 
-  // const url = `https://blog-backend-drab.vercel.app/api/blogs/${id}/edit`
-  const url = `http://127.0.0.1:8000/api/blogs/${id}/edit`
+  const url = `https://blog-backend-drab.vercel.app/api/blogs/${id}/edit`
+  // const url = `http://127.0.0.1:8000/api/blogs/${id}/edit`
+
   useEffect(() => {
     setLoading(true)
     const fetchBlog = async () => {
@@ -93,8 +94,8 @@ const UpdateBlog = () => {
       formData.append('cover', cover);
     } 
 
-    // const urlUpdate = `https://blog-backend-drab.vercel.app/api/blogs/${id}/edit`
-    const urlUpdate = `http://127.0.0.1:8000/api/blogs/${id}/edit`
+    const urlUpdate = `https://blog-backend-drab.vercel.app/api/blogs/${id}/edit`
+    // const urlUpdate = `http://127.0.0.1:8000/api/blogs/${id}/edit`
     
     try {
         const response = await fetch(urlUpdate, {
@@ -155,8 +156,8 @@ let uploadCover = async () => {
   const formData = new FormData();
   formData.append('cover', cover);
 
-  // const urlUpdate = `https://blog-backend-drab.vercel.app/api/blogs/${id}/edit`
-  const urlUpdate = `http://127.0.0.1:8000/api/blogs/${id}/edit`
+  const urlUpdate = `https://blog-backend-drab.vercel.app/api/blogs/${id}/edit`
+  // const urlUpdate = `http://127.0.0.1:8000/api/blogs/${id}/edit`
 
   const response = await fetch(urlUpdate, {
     method: "PUT",

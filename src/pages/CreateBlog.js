@@ -49,8 +49,9 @@ const CreateBlog = () => {
                 formData.append('cover', '/covers/default.jpg');
             }
             
-            // const url = `https://blog-backend-drab.vercel.app/api/blogs/`
-            const url = `http://127.0.0.1:8000/api/blogs/`
+            const url = `https://blog-backend-drab.vercel.app/api/blogs/`
+            // const url = `http://127.0.0.1:8000/api/blogs/`
+
             const response = await fetch(url, {
                 method: 'POST',
                 body: formData,
