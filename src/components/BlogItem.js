@@ -4,7 +4,6 @@ import Placeholder from '../assets/placeholder.jpg'
 import {getTime} from '../utils/getTime'
 
 const BlogItem = ({blog}) => {
-  console.log('blog', blog);
   return (
     <Link to={`/blog/${blog.id}`}>
         <div className="blog-item">

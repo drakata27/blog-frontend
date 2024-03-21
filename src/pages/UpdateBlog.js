@@ -232,7 +232,8 @@ return (
                   type='file' 
                   accept='image/*' 
                   value={undefined} 
-                  onChange={(e)=> setCover(e.target.files[0])}/>
+                  onChange={(e)=> setCover(e.target.files[0])}
+                />
               <button onClick={uploadCover} className='upload-btn'>Uplaod</button>
           </div>
 

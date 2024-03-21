@@ -140,6 +140,16 @@ const BlogPage = () => {
           {token !== null &&
             <>
               <div>
+                {
+                  blog.is_draft ?
+                    <p>
+                      <span class="material-symbols-outlined"> 
+                        draft
+                      </span> 
+                    </p> :
+                    <p></p>
+                }
+
                 <button className='edit-btn'>
                   <Link to={`/blog/${id}/edit`}>
                   <span className="material-symbols-outlined">
