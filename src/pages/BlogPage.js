@@ -135,7 +135,27 @@ const BlogPage = () => {
           </div>
   
           <div className='horizontal-container'>
-            <p>{getTime(blog?.created)}</p>
+            {
+              getTime(blog.updated) > getTime(blog.created) ?
+               <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  marginTop: '0.5rem'
+                }}
+               >
+                <p style={{
+                  marginTop: '0rem',
+                  marginBottom: '0rem'
+                }}>Published {getTime(blog?.created)}</p>
+                
+                <p style={{
+                  marginTop: '0rem',
+                  marginBottom: '0rem'
+                }} >Updated {getTime(blog?.updated)}</p>
+               </div> : <p>Published {getTime(blog?.created)}</p>
+            }
   
           {token !== null &&
             <>
