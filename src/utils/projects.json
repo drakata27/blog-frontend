@@ -1,0 +1,28 @@
+[
+        {
+        "id": 1,
+        "title" : "Django Online Store",
+        "description" : "Web Ecommerce store",
+        "image": "../projects/online-store.png",
+        "links" : [
+            {
+                "github" : "https://github.com/drakata27/django-online-store",
+                "web" : "https://django-online-store.vercel.app/"
+            }
+        ],
+        "tech" : ["Python", "JavaScript", "HTML/CSS", "Django"]
+    },
+    {
+        "id": 2,
+        "title" : "Android Ecommerce App",
+        "description" : "Ecommerce Android application",
+        "image": "../projects/android-ecommerce.png",
+        "links" : [
+            {
+                "github" : "https://github.com/drakata27/android-ecommerce",
+                "web" : "https://www.youtube.com/watch?v=kpEMa3tU7Ns"
+            }
+        ],
+        "tech" : ["Java", "XML", "Firebase"]
+    }
+]

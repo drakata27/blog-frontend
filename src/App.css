@@ -508,6 +508,44 @@ form a:hover{
   margin-top: 5rem;
   margin-bottom: 30rem;
 }
+
+/* About */
+.about-container>h1{
+  color: orange;
+  margin-top: 2rem;
+  margin-left: 14%;
+  margin-right: 14%;
+  font-size: 5rem;
+}
+.about-content, .about-projects{
+  margin: 4rem 20rem;
+}
+.about-picture>img{
+  border-radius: 50%;
+  height: 25rem;
+  width: 25rem;
+}
+
+.about-picture, .about-text {
+  margin: 0 3rem;
+}
+.about-text>p {
+  font-family: 'Lexend', sans-serif;
+}
+
+.projects-container{
+  margin: 0 4rem;
+}
+
+.projects-container img{
+  width: 20rem;
+  height: 20rem;
+}
+
+.projects-container hr{
+  visibility: visible;
+}
+
 /* Contact */
 .contact-container-main{
   margin: 3rem;
@@ -582,6 +620,17 @@ form a:hover{
   background-color: darkgreen;
 }
 
+/* Tablet */
+@media screen and (max-width: 1587px) {
+   /* About */
+   .about-content{
+    flex-direction: column;
+  }
+  .about-content, .about-projects{
+    margin: 4rem 2rem;
+  }
+}
+
 
 /* Mobile */
 @media screen and (max-width: 768px) {
@@ -600,11 +649,6 @@ form a:hover{
 
   .sign-out-btn{
     color: red;
-  }
-
-  /* Blogs List */
-  .blogs-list-container>h1{
-    font-size: 3rem;
   }
 
   /* Blog Item */
@@ -673,6 +717,12 @@ form a:hover{
 
   .form-btn{
     width: 50%;
+  }
+
+  /* About */
+  .about-picture>img{
+    height: 15rem;
+    width: 15rem;
   }
 
   /* Contact */
