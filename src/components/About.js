@@ -1,6 +1,8 @@
 import React from 'react'
 import Profile from '../assets/profile-photo.jpg'
 import Projects from '../utils/projects.json'
+import GitHub from '../assets/github.png'
+import Demo from '../assets/demo.webp'
 
 const About = () => {
   return (
@@ -29,18 +31,24 @@ const About = () => {
                     Projects.map(project => (
                         <div className="horizontal-container">
                             <div key={project.id}>
-                                <div className="project-image">
-                                    <img src={project.image} alt={project.title} />
+                                <div>
+                                    <img className="project-image" src={project.image} alt={project.title} />
                                 </div>
 
                                 <div className="project-content">
                                     <h3>{project.title}</h3>
-                                    <p>{project.description}</p>
-                                    <p>{project.tech}</p>
+                                    <p className='project-desc'>{project.description}</p>
+                                    <p> 
+                                        {project.tech.map((technology, index)=> (
+                                            <span className='project-tech' key={index}>{technology}</span>
+                                        ))}
+                                    </p>
                                     {project.links.map(link => (
-                                        <div key={project.id}>
-                                            <a target='blank' href={link.github}>Github</a>
-                                            <a target='blank' href={link.web}>See Online</a>
+                                        <div className='project-links' key={project.id}>
+                                            <a target='blank' href={link.web}>
+                                                <img src={Demo} alt='demo'/>Demo</a>
+                                            <a target='blank' href={link.github}>
+                                                <img src={GitHub} alt='github'/>Github</a>
                                         </div>
                                     ))}
                                 </div>
@@ -48,8 +56,6 @@ const About = () => {
                         </div>
                     ))
                 }
-
-                <hr />
             </div>
         </div>
     </div>

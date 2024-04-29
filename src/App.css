@@ -535,16 +535,65 @@ form a:hover{
 
 .projects-container{
   margin: 0 4rem;
+
+}
+.projects-container>div{
+  margin-bottom: 5rem;
 }
 
-.projects-container img{
-  width: 20rem;
+.project-image{
   height: 20rem;
+  width: 40rem;
 }
 
-.projects-container hr{
-  visibility: visible;
+
+.project-content {
+  margin-left: 2rem;
 }
+.project-content h3 {
+  color: var(--color-title);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.project-content p{
+  margin-bottom: 1rem;
+}
+.project-desc {
+  text-align: start;
+  font-family: 'Lexend', sans-serif;
+}
+.project-tech{
+  background-color: rgb(196, 111, 6);
+  margin-left: 1rem;
+  padding: 0.5rem;
+  border-radius: 25px;
+  color: var(--color-text);
+  font-size: 1.3rem;
+}
+.project-tech:nth-child(1){
+  margin-left: 0;
+}
+.project-links {
+  margin-top: 3rem;
+}
+.project-links a{
+  margin-right: 2rem;
+  padding: 0.8rem;
+  color: white;
+  border-radius: 20px;
+}
+.project-links a:nth-child(1){
+  background-color: green;
+}
+.project-links a:nth-child(2){
+  background-color: black;
+}
+.project-links img{
+  height: 1rem;
+  width: 1rem;
+  margin-right: 1rem;
+}
+
 
 /* Contact */
 .contact-container-main{
@@ -623,12 +672,19 @@ form a:hover{
 /* Tablet */
 @media screen and (max-width: 1587px) {
    /* About */
-   .about-content{
+   .about-content,
+   .projects-container>.horizontal-container>div{
     flex-direction: column;
   }
-  .about-content, .about-projects{
+  .about-content, .about-projects, .projects-container{
     margin: 4rem 2rem;
   }
+  .project-image{
+    width: 30rem !important;
+    height: 15rem !important;
+    margin-bottom: 2rem;
+  }
+
 }
 
 
@@ -723,6 +779,13 @@ form a:hover{
   .about-picture>img{
     height: 15rem;
     width: 15rem;
+  }
+  .project-image{
+    width: 20rem !important;
+    height: 10rem !important;
+  }
+  .project-image:nth-child(1){
+    margin-left: -3rem;
   }
 
   /* Contact */
