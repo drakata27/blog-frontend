@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.7",
+    "cross-env": "^7.0.3",
     "dayjs": "^1.11.10",
     "emailjs": "^4.0.3",
     "jwt-decode": "^4.0.0",
@@ -25,9 +26,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "NODE_PATH=src react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "cross-env NODE_PATH=src react-scripts start",
+    "build": "cross-env react-scripts build",
+    "test": "cross-env react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

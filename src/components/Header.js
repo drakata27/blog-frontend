@@ -114,7 +114,9 @@ const Header = () => {
           <button 
             className='sign-out-btn nav-menu-list'
             onClick={logoutUser}>
-            Sign Out 
+            <span class="material-symbols-outlined">
+              logout
+            </span> 
           </button>
           </li>
           <hr />
