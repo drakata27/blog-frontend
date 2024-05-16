@@ -140,6 +140,22 @@ button:hover {
   border-radius: 4px;
 }
 
+.sign-out-btn:hover{
+  background-color: red;
+  border-radius: 4px;
+  padding: 2rem;
+}
+
+.anonymuous-preveiw-btn {
+  background-color: orange;
+  border-radius: 4px;
+  margin-left: 12rem;
+  margin-top: 2rem;
+}
+.anonymuous-preveiw-btn:hover{
+  background-color: rgb(160, 97, 20);
+}
+
 .username{
   font-family: 'Lexend', sans-serif;
   margin-right: 2rem;
@@ -575,6 +591,7 @@ form a:hover{
 }
 .project-links {
   margin-top: 3rem;
+  margin-left: 1rem;
 }
 .project-links a{
   margin-right: 2rem;

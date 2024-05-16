@@ -9,6 +9,9 @@ const BlogsListPage = () => {
     const url = 'https://blog-backend-drab.vercel.app/api/blogs/'
     // const url = 'http://127.0.0.1:8000/api/blogs/' Testing
     const token = localStorage.getItem("authTokens")
+    const [clicked, setClicked] = useState(false)
+
+
 
     useEffect(()=>{
         setLoading(true)
@@ -16,19 +19,46 @@ const BlogsListPage = () => {
             let response = await fetch(url)
             let data = await response.json()
     
-            if (token === null) {
+            if (token === null || !clicked) {
                 setBlogs(data.filter(blog => !blog.is_draft));
             } else {
                 setBlogs(data)
+                setClicked(true)
             }
     
             setLoading(false)
         }
         getBlogs()
-    }, [token])
+    }, [token, clicked])
+
+    const handlePreviewClick = () => {
+        setClicked(prevState => !prevState);
+    };
 
   return (
     <div className='blogs-list-container'>
+        {
+            token != null ?
+            clicked === true ?
+                <button 
+                style={{backgroundColor : "red"}} 
+                className='anonymuous-preveiw-btn nav-menu-list'
+                onClick={handlePreviewClick}>
+                <span class="material-symbols-outlined">
+                    domino_mask
+                </span> OFF
+                </button> : 
+                <button
+                style={{backgroundColor : "green"}} 
+                className='anonymuous-preveiw-btn nav-menu-list'
+                onClick={handlePreviewClick}>
+                <span class="material-symbols-outlined">
+                    domino_mask
+                </span> ON
+                </button> :
+            <div></div>
+
+        }
         <h1>Latest</h1>
         {
             loading ? 
