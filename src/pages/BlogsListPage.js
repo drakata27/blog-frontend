@@ -9,7 +9,7 @@ const BlogsListPage = () => {
     const url = 'https://blog-backend-drab.vercel.app/api/blogs/'
     // const url = 'http://127.0.0.1:8000/api/blogs/' Testing
     const token = localStorage.getItem("authTokens")
-    const [clicked, setClicked] = useState(false)
+    const [clicked, setClicked] = useState(true)
 
 
 
