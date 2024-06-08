@@ -50,6 +50,11 @@ const BlogPage = () => {
         setLoading(true)
         const isConfirmed = window.confirm("Are you sure you want to delete this blog?");
 
+        if (!isConfirmed) {
+          setLoading(false);
+          return;
+        }
+        
         if (isConfirmed) {
           try {
             const response = await fetch(`https://blog-backend-drab.vercel.app/api/blogs/${id}/`, {
