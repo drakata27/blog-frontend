@@ -4,7 +4,23 @@ import Projects from '../utils/projects.json'
 import GitHub from '../assets/github.png'
 import Demo from '../assets/demo.webp'
 
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
 const About = () => {
+
+    useGSAP(()=>{
+        gsap.fromTo('.about-container', {
+          opacity: 0,
+          y: 20
+        }, {
+          opacity: 1,
+          y: 0,
+          delay: 0.2,
+          stagger: 0.1
+        })
+      }, [])
+
   return (
     <div className="about-container">
         <h1>About</h1>

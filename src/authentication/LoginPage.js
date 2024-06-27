@@ -2,7 +2,23 @@ import React, { useContext, useState } from 'react'
 import AuthContext from '../context/AuthContext'
 import Loader from "react-spinners/ScaleLoader";
 
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
 const LoginPage = () => {
+  useGSAP(()=>{
+    gsap.fromTo('.login-form', {
+      opacity: 0,
+      y: 20
+    }, {
+      opacity: 1,
+      y: 0,
+      delay: 0.15,
+      stagger: 0.1
+    })
+  }, [])
+
+
   const {loginUser} = useContext(AuthContext)
   const [loading, setLoading] = useState(false)
 

@@ -8,9 +8,27 @@ import Mail from '../assets/mail.png'
 import emailjs from '@emailjs/browser';
 
 import Loader from "react-spinners/ScaleLoader";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
 const swal = require('sweetalert2')
 
+
 const Contact = () => {
+  // Animation
+  useGSAP(()=>{
+    gsap.fromTo('.contact-container-main', {
+      opacity: 0,
+      y: 20
+    }, {
+      opacity: 1,
+      y: 0,
+      delay: 0.2,
+      stagger: 0.1
+    })
+  }, [])
+
+
   const form = useRef();
   const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
   const serviceId = process.env.REACT_APP_SERVICE_ID;
