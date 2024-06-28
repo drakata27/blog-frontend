@@ -16,15 +16,17 @@ const swal = require('sweetalert2')
 
 const Contact = () => {
   // Animation
+  const delay = 0.2
   useGSAP(()=>{
-    gsap.fromTo('.contact-container-main', {
-      opacity: 0,
-      y: 20
-    }, {
+    gsap.to('#title-contact', {
       opacity: 1,
-      y: 0,
-      delay: 0.2,
-      stagger: 0.1
+      delay: delay
+    })
+
+    gsap.to('.contact-container', {
+      opacity:1,
+      y:-40,
+      delay: delay
     })
   }, [])
 
@@ -91,9 +93,9 @@ const Contact = () => {
 
   return (
     <div className='contact-container-main'>
-    <h1>Contact</h1>
-    <div className='contact-container'>
+    <h1 id='title-contact' style={{opacity:'0'}}>Contact</h1>
 
+    <div className='contact-container' style={{opacity:'0'}}>
       <div className='contact-links'>
         <div className='links'>
           <Link to='https://www.linkedin.com/in/aleksandar-drakaliyski/' target="_blank"><img className='social-icon' src={LinkedIn} alt='linkedin'/></Link>

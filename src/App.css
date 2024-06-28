@@ -637,8 +637,6 @@ form a:hover{
   align-items: center;
   justify-content: space-between;
   margin: 2rem;
-  border: var(--color-text) 2px solid;
-  border-radius: 20px;
   padding: 2rem;
 }
 
