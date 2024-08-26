@@ -13,7 +13,6 @@ import CreateBlog from './pages/CreateBlog';
 import UpdateBlog from './pages/UpdateBlog'
 import LoginPage from './authentication/LoginPage';
 import Contact from './components/Contact';
-import About from './components/About';
 
 function App() {
   return (
@@ -37,7 +36,6 @@ function App() {
   
             <Route exact path='/login' element={<LoginPage/>}/>
             <Route exact path='/contact' element={<Contact/>}/>
-            <Route exact path='/about' element={<About/>}/>
   
           </Routes>
           <Footer />

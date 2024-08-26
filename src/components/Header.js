@@ -128,11 +128,6 @@ const Header = () => {
           </Link>
         </li>
         <li>
-          <Link to={"/about"} className="nav-menu-list">
-            About
-          </Link>
-        </li>
-        <li>
           <Link to={"/contact"} className="nav-menu-list">
             Contact
           </Link>
